@@ -46,22 +46,17 @@ stock-price-prediction/
 └── LICENSE
 ```
 ``` Python
-from keras.models import Sequential
-from keras.layers import LSTM, Dense
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import LSTM
+     
 
-# Define the model
-model = Sequential([
-    LSTM(50, return_sequences=True, input_shape=(60, 1)),
-    LSTM(50, return_sequences=False),
-    Dense(25),
-    Dense(1)
-])
-
-# Compile the model
-model.compile(optimizer='adam', loss='mean_squared_error')
-
-# Train the model
-model.fit(X_train, y_train, batch_size=64, epochs=10)
+model = Sequential()
+model.add(LSTM(50 , return_sequences = True , input_shape =(100 , 1)))
+model.add(LSTM(50 , return_sequences=True))
+model.add(LSTM(50))
+model.add(Dense(1))
+model.compile(loss= 'mean_squared_error' , optimizer = 'adam')
 ```
 ## **📊 Power BI Dashboard**
 The Power BI dashboard combines:
